@@ -2,8 +2,8 @@
 
 int main(void) {
 
-int zahl;
-char buchstabe;
+int zahl =8;
+char buchstabe = 'A';
 
 for(zahl=8; zahl>0; zahl--) {
     for(buchstabe='A'; buchstabe<='H'; buchstabe++) {
