@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-void change_second_letter(char str[]) {
-    *(str + 1) = 'c';
-    printf("%s\n", str);
+void change_second_letter(char p[]) {
+    *(p + 1) = 'c';
+    printf("%s\n", p);
 }
 
 int main() {
