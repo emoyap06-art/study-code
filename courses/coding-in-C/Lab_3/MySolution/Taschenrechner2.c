@@ -7,11 +7,22 @@ int main () {
     float ergebnis;
 
     printf("Zahl 1:\n");
-    scanf("%f", &nummer1);
+    if (scanf(" %f", &nummer1) != 1) {
+        printf("Ungültige Eingabe. Bitte geben Sie eine Zahl ein.\n");
+        return 1; // Beendet das Programm mit einem Fehlercode
+    }
+
     printf("Zahl2:\n");
-    scanf("%f", &nummer2);
+    if (scanf(" %f", &nummer2) != 1) {
+        printf("Ungültige Eingabe. Bitte geben Sie eine Zahl ein.\n");
+        return 1; // Beendet das Programm mit einem Fehlercode
+    }
+    
     printf("Operator wählen(+, -, *, /): \n");
-    scanf(" %c", &operator);
+    if (scanf(" %c", &operator) != 1) {
+        printf("Ungültige Eingabe. Bitte geben Sie einen Operator ein.\n");
+        return 1; // Beendet das Programm mit einem Fehlercode
+    }
 
     switch (operator) {
         case '+':
