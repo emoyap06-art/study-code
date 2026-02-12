@@ -2,16 +2,16 @@
 #include <string.h>
 
 char array[100];
-char* ptr_array1 = array;
-char* ptr_array2 = array;
 
 int main() {
+
     printf("Enter a word: \n");
-    fgets(array, sizeof(array), stdin);
+    if (fgets(array, sizeof(array), stdin) != NULL) {
+
     array[strcspn(array, "\n")] = '\0'; // Entfernt das Newline-Zeichen, das von fgets hinzugefügt wird
 
-ptr_array1 = &array[0];
-ptr_array2 = &array[strlen(array)-1]; //Länge des Strings (\0). Dann -1 um auf den letzten Buchstaben zuzugreifen, da der letzte Index immer Länge -1 ist.
+char* ptr_array1 = &array[0];
+char* ptr_array2 = &array[strlen(array)-1]; //-1, da Array beo 0 beginnt und strlen die Anzahl der Zeichen zurückgibt, nicht den Index des letzten Zeichens
 
 int is_palindrome =1;
 
@@ -20,13 +20,11 @@ while(ptr_array1 < ptr_array2) {
         if(*ptr_array1 != *ptr_array2) {
             is_palindrome = 0;
             break;
-        } else {
-            is_palindrome = 1;
-        }
+        } 
 
         ptr_array1++;
         ptr_array2--;
-    }
+}
 
 if(is_palindrome) {
 printf("Your provided word ' %s' is a palindrome.\n", array);
@@ -35,4 +33,5 @@ printf("Your provided word ' %s' is not a palindrome.\n", array);
 }
 
     return 0;
+}
 }
