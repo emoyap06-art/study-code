@@ -11,7 +11,7 @@ int main() {
     array[strcspn(array, "\n")] = '\0'; // Entfernt das Newline-Zeichen, das von fgets hinzugefügt wird
 
 ptr_array1 = &array[0];
-ptr_array2 = &array[strlen(array)-1];
+ptr_array2 = &array[strlen(array)-1]; //Länge des Strings (\0). Dann -1 um auf den letzten Buchstaben zuzugreifen, da der letzte Index immer Länge -1 ist.
 
 int is_palindrome =1;
 
