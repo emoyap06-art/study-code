@@ -58,14 +58,15 @@ if(*(p + i)==1) {
 *(pc + new_index) += 1;
 }
 }
+
+//------ Kollisionsbehandlung ----
 for(int j=0; j<10; j++) {
 if(*(pc +j)==1) {*(p2 + j)=1;
 } else {
     *(p2 + j) =0;
     printf("Collision at index %d\n", j);
 }
-}
-
+ }
 
 printf("Time 1: ");
 for(int i=0; i<10; i++) {
