@@ -1,0 +1,5 @@
+10 20 Die Informatik ist die systematische und automatische Verarbeitung von Informationen, die gesendet, gespeichert und bearbeitet werden können.
+
+Dabei unterscheidte man zwischen einzelnen Aneinanderreihungen bedeutungsloser zeichen (Daten), welche erst eine Bedeutung erhalten, nachdem sie einem Kontext zugewiesen bekommen.
+
+Man spricht dann von einer Information, also eine Nachricht aus den zusammengesetzten Daten.
