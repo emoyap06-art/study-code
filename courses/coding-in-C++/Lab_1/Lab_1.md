@@ -40,7 +40,7 @@ g++ helloWorld.cpp -o helloWorld
 The goal of this section is to get to know some new features of the C++ language including bool, namespaces, input/output via streams.
 
 ### Task Description
-Your task is to implement a software that receives the age of an user via keyboard and determines if the user is akid/teenager, an adult or a senior.
+Your task is to implement a software that receives the age of an user via keyboard and determines if the user is a kid/teenager, an adult or a senior citizen.
 
 ### Requirements
 
@@ -59,11 +59,185 @@ bool isSenior(___ age);
    * true if age is 65 or older
    * false otherwise
 
-* As datatype for the parameters, you should use a portable type from \<cstdint>.
+* As data type for the parameters, you should use a portable type from \<cstdint>.
+* Do not use the __using__ keyword.
 * Output of the main program should look like this:
-Question: Which data types could be used? Implement it with using and without using
+```c
+Please enter your age: 77
+You are 77 years old.
+That means that you are a senior citizen.
+```
+```c
+Please enter your age: 48
+You are 48 years old.
+That means that you are an adult.
+```
+```c
+Please enter your age: 13
+You are 13 years old.
+That means that you are still a kid or teenager.
+```
+* Use the portable data type __uint8_t__ in the main to store entered age.
+* Implement it with and without the keyword __using__
 
-### Hint
+### Questions & further tasks
+Note: Write the answers for the questions in the code as comments.
+* What exactly is the problem when using __uint8_t__ for storing the entered age of the user?
+* Fix the issue when using __uint8_t__ by using an integer and static casts instead.
+* Which other portable data types would make sense in this example?
 
-Think about how the **row index and column index together** can be used to decide whether a field is light or dark.
+## 🟡 Section III: Student Grade Report Formatter
 
+This exercise practices the following C++ concepts:
+
+* Call-by-reference (references)
+* `std::string`
+* Formatted output with `std::cout`
+* I/O manipulators
+
+### Task
+
+Write a C++ program that reads information about a student, calculates the final grade, and prints a formatted report card.
+
+Your program must be divided into **multiple functions**.
+
+---
+
+### Step 1 — Read Student Data
+
+Create the following function:
+
+```cpp
+void readStudentData(__ name,
+                     __ homework,
+                     __ midterm,
+                     __ finalExam);
+```
+
+The function should:
+
+1. Ask the user for the **student name**
+2. Ask for three scores:
+
+   * Homework
+   * Midterm
+   * Final exam
+3. Store all inputs using **call-by-reference parameters**
+4. Ensure that the scores are in the range of [0, 100] and if not:
+   * Reset error status
+   * flush buffer
+   * request another input
+5. Use portable data types to ensure the most efficient execution of the code
+
+#### Example Input
+
+```
+Enter student name: Alice
+Homework score: 87
+Midterm score: 78
+Final exam score: 92
+```
+
+---
+
+### Step 2 — Calculate the Final Grade
+
+Create the function:
+
+```cpp
+void calculateGrade(__ homework,
+                    __ midterm,
+                    __ finalExam,
+                    __ finalGrade,
+                    __ letterGrade);
+```
+that calculates the final grade based on the rules below:
+
+### Grade Weights
+
+| Component  | Weight |
+| ---------- | ------ |
+| Homework   | 40%    |
+| Midterm    | 25%    |
+| Final Exam | 35%    |
+
+## Letter Grades
+
+| Range | Grade |
+| ----- | ----- |
+| ≥ 90  | A     |
+| ≥ 80  | B     |
+| ≥ 70  | C     |
+| ≥ 60  | D     |
+| ≥ 50  | E     |
+| < 50  | F     |
+
+The parameter letter_grade must be of type __string__.
+
+Return the results using **reference parameters**.
+
+---
+
+### Step 3 — Print a Formatted Report
+
+Create the function:
+
+```cpp
+void printReport(__ name,
+                 __ homework,
+                 __ midterm,
+                 __ finalExam,
+                 __ finalGrade,
+                 __ letterGrade);
+```
+that creates the formatted report card.
+
+It also determines a status string based on the letter grade using __string comparison__:
+
+```
+Letter       	Status
+-----------------------
+A,B,C	        PASS
+D,E	            CONDITIONAL PASS
+F	            FAIL
+```
+
+The function __printReport__ should use manipulators to format the report card.
+
+You should use at least:
+```cpp
+std::left and std::right
+std::setw(n)
+std::setprecision(n)
+```
+#### Example Output
+
+```
+-------------------------------------
+Student Report
+-------------------------------------
+Name: Alice
+
+Scores
+-------------------------------------
+Homework        : 87.00
+Midterm         : 78.00
+Final Exam      : 92.00
+
+Final Grade     : 86.05
+Letter Grade    : B
+Status          : Pass
+-------------------------------------
+```
+
+---
+
+### Step 4 — Other requirements
+
+Your `main()` should:
+
+1. Declare all required variables
+2. Call the functions in the correct order
+3. Print the final report
+
+The program should be implemented in a modular way using header files.
