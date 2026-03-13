@@ -10,6 +10,7 @@ init_playlist(&p1);
 add_song(&p1, "Hasso", "KC");
 add_song(&p1, "Stan", "Eminem");
 add_song(&p1, "Für Elise", "Ludwig van Beethoven");
+add_song(&p1, "Bohemian Rhapsody", "Queen");    
 
 print_playlist(&p1);
 

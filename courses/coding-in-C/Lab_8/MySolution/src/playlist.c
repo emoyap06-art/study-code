@@ -26,44 +26,47 @@ void init_playlist(playlist* playlist_1) {
  * @param p_current aktueller Song(zum durchlaufen)
  */
 void add_song(playlist* playlist_1, const char* title, const char* artist) {
-    if(playlist_1->size>=MAX_SONGS) {
-        printf("Maximale Anzahl an Songs erreicht\n");
-        return;
-    } else{
-    Song* NewSong= malloc(sizeof(*NewSong));
-    if(NewSong==NULL) {
-        printf("Speicherallokation fehleschlagen\n");
-        free(NewSong);
+    if (playlist_1 == NULL || title == NULL || artist == NULL) {
         return;
     }
-    NewSong->title= malloc((strlen(title))+1);
-    NewSong->artist= malloc(strlen(artist)+1);
 
-    if(NewSong->title==NULL || NewSong->artist==NULL) {
-        printf("Speicherallokation fehleschlagen\n");
+    if (playlist_1->size >= MAX_SONGS) {
+        printf("Maximale Anzahl an Songs erreicht\n");
+        return;
+    }
+
+    Song* NewSong = malloc(sizeof(*NewSong));
+    if (NewSong == NULL) {
+        printf("Speicherallokation fehlgeschlagen\n");
+        return;
+    }
+
+    NewSong->title = malloc(strlen(title) + 1);
+    NewSong->artist = malloc(strlen(artist) + 1);
+
+    if (NewSong->title == NULL || NewSong->artist == NULL) {
+        printf("Speicherallokation fehlgeschlagen\n");
         free(NewSong->title);
         free(NewSong->artist);
         free(NewSong);
         return;
     }
-    strcpy(NewSong->title,title);
+
+    strcpy(NewSong->title, title);
     strcpy(NewSong->artist, artist);
-    NewSong->p_next=NULL;
-    
+    NewSong->p_next = NULL;
 
-    if(playlist_1->p_head==NULL){
-        playlist_1->p_head=NewSong;
-    } 
-    
-    //Bis ans Ende der Playlist laufen, um hinzuzufügen
-    Song* p_current= playlist_1->p_head;
-    while(p_current->p_next!=NULL) {
-        p_current=p_current->p_next;
+    if (playlist_1->p_head == NULL) {
+        playlist_1->p_head = NewSong;
+    } else {
+        Song* p_current = playlist_1->p_head;
+        while (p_current->p_next != NULL) {
+            p_current = p_current->p_next;
+        }
+        p_current->p_next = NewSong;
     }
-    p_current->p_next=NewSong;
-}
-playlist_1->size++;
 
+    playlist_1->size++;
 }
 
 
