@@ -184,5 +184,5 @@ To test the classes in main:
 
 ### 💬 Reflection Questions
 
-1. What would change if the attributes in `User` were `private` or `public` instead of `protected`?  
+1. What would change if the access specifier in the inheritance declaration is deleted?
 2. Why is it important to call the base class constructor?  
