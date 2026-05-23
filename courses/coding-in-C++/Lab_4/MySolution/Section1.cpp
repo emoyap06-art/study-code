@@ -55,6 +55,27 @@ class Vector2D {
         y= y*other.y;
         return *this;
     }
+
+    //Komparison in Vector itself
+    void compare() {
+        if(get_X()>get_X()) {
+            std::cout <<"Parameter x is higher \n" <<std::endl;
+        } else if(get_X()<get_Y()) {
+            std::cout<<"Parameter y is higher \n" <<std::endl;
+        } else if(get_X()==get_Y()) {
+            std::cout<<"Bothe Parameters are equal \n" <<std::endl;
+        }
+    }
+
+    //Comparison with other Vector
+    bool operator==(const Vector2D& other) {
+        return get_X() == other.get_X() && get_Y() == other.get_Y();
+    }
+
+    bool operator!=(const Vector2D& other) const {
+        return get_X() != other.get_X() || get_Y() != other.get_Y(); 
+    }
+    
 };
 
 // std::cout << ...
@@ -63,9 +84,9 @@ std::ostream& operator << (std::ostream& os,const Vector2D& other) {
     }
 
 
-
 int main () {
     Vector2D a(5,6), b(7,8);
+    Vector2D x(2,2), y(2,2);
     a.print();
     b.print();
 
@@ -82,5 +103,22 @@ int main () {
     e.print();
 
     std::cout << e;
+
+    a.compare();
+
+    if(a==b) {
+        std::cout<<"Equal" <<std::endl;
+    }
+    else {
+        std::cout<<"Not Equal" <<std::endl;
+    };
+
+    if(x==y) {
+        std::cout<<"Equal" <<std::endl;
+    }
+    else {
+        std::cout<<"Not Equal" <<std::endl;
+    };
+
     return 0;
 }
